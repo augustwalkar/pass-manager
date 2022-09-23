@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Static/css/edit.css">
+    <title>Edit</title>
+</head>
+
+<body>
+    <%if(singleData){%>
+        <form action="/editOne/<%=singleData._id%>" method="post">
+            <label for="appname">
+                <%=singleData.appname%>
+            </label>
+            <input type="text" placeholder="Appname" name="appname" id="appname">
+            <label for="username">
+                <%=singleData.username%>
+            </label>
+
+            <input type="text" placeholder="Username" name="username" id="username">
+            <label for="email">
+                <%=singleData.email%>
+            </label>
+
+            <input type="email" placeholder="Email" name="email" id="email">
+            <label for="password">
+                <%=singleData.password%>
+            </label>
+
+            <input type="password" placeholder="Password" name="password" id="password">
+            <input type="submit" value="Edit">
+        </form>
+        <%}else{%>
+            <h1>No Data Found</h1>
+            <%}%>
+
+</body>
+
+</html>

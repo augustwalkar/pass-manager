@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        <% if(title){%>
+            Welcome <%=title%>
+                <%}else{%>
+                    Pass-manager
+                    <%}%>
+
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Static/css/style.css" />
+    <link rel="stylesheet" href="../Static/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="../Static/script/script.js" defer></script>
+</head>
+
+<body>
+    <%- include('../templates/navbar.ejs')%>
+        <section class="form-container">
+            <form class="form" id="form" action="/add" method="post" class="layout">
+                <div class="top">
+                    <input class="title-input" type="text" placeholder="App Name Website Name software Name" required
+                        name="appname" id="appname" />
+                </div>
+                <p class="login-details">Save Info</p>
+                <div class="text-password-area">
+                    <input class="login-text" type="text" placeholder="Username" name="username" id="username" />
+                    <input class="login-text" type="text" placeholder="Email" name="email" id="email" />
+                    <input class="password-area" type="password" placeholder="Password" name="password" id="password" />
+                </div>
+
+                <input class="submit-button" type="submit" value="Save" />
+            </form>
+        </section>
+</body>
+
+</html>

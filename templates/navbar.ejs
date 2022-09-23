@@ -1,0 +1,16 @@
+<nav>
+    <input type="checkbox" id="check" />
+    <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+    </label>
+    <p class="logo">Passmanager</p>
+    <ul>
+        <%if(Data){%>
+
+            <li><a href="/add">Add More</a></li>
+            <%}else{%>
+                <li><a href="/home">Saved Password</a></li>
+                <%}%>
+                    <li><a href="/">Logout</a></li>
+    </ul>
+</nav>

@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Satisfy&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: montserrat;
+}
+
+.bg {
+    width: 100vw;
+    height: 100vh;
+}
+
+.submit-button {
+    width: 5rem;
+    height: 2rem;
+    border-radius: 30px;
+    background: rgb(229, 225, 225);
+    border: none;
+    font-family: "Poppins", sans-serif;
+    border: 1px solid black;
+}
+
+.submit-button:hover {
+    background-color: black;
+    color: white
+}
+
+
+.layout {
+    width: 100vw;
+    height: calc(100vh - 80px);
+    /* background-color: red; */
+}
+
+#form {
+    width: 100vw;
+    height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: red; */
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.text-password-area {
+    width: 30vw;
+    /* background-color: yellow; */
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.login-details {
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+}
+
+.login-text {
+    font-family: "Poppins", sans-serif;
+    width: 30vw;
+    border-radius: 5px;
+    outline: none;
+    padding: 0.8rem;
+    font-size: 15px;
+    border: 1px solid black;
+}
+
+.password-area {
+    font-family: "Poppins", sans-serif;
+    width: 30vw;
+    border-radius: 5px;
+    outline: none;
+    padding: 0.8rem;
+    font-size: 15px;
+    border: 1px solid black;
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    /* background-color: black; */
+}
+
+.title-input {
+    font-family: "Poppins", sans-serif;
+    width: 30vw;
+    border-radius: 5px;
+    outline: none;
+    padding: 0.8rem;
+    font-size: 15px;
+    border: 1px solid black;
+}
+
+.title-input::placeholder {
+    transition: 0.5 ease-in-out;
+}

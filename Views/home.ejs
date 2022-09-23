@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <% if(title){%>
+            Welcome <%=title%>
+                <%}else{%>
+                    Pass-manager
+                    <%}%>
+
+    </title>
+    <link rel="stylesheet" href="../Static/css/home.css" />
+    <link rel="stylesheet" href="../Static/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="../Static/script/home.js" defer></script>
+    <script src="https://kit.fontawesome.com/6656538b67.js" crossorigin="anonymous" defer></script>
+
+</head>
+
+<body>
+    <%- include('../templates/navbar.ejs') %>
+        <p class="all-details">All Info</p>
+        <!-- table starts here -->
+        <div class="main">
+            <%if(Data.length !=0){%>
+                <%Data.forEach((data,i)=>{ %>
+                    <div class="block">
+                        <table class="data">
+                            <tr>
+                                <th>App / Website name :</th>
+                                <td>
+                                    <p>
+                                        <%=data.appname%>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Username :</th>
+                                <td>
+                                    <p>
+                                        <%=data.username%>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Email :</th>
+                                <td>
+                                    <p>
+                                        <%=data.email%>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Password :</th>
+                                <td>
+                                    <input type="password" name="password" class="password" value="<%=data.password%>"
+                                        readonly>
+                                    </input><i class="fa-solid fa-eye"></i>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="btn-div">
+                            <form action="/editOne/<%=data.id%>" method="get">
+                                <input class="edit-btn" type="submit" value="Edit" name="edit" />
+                            </form>
+                            <form action="/deleteOne/<%=data.id%>" method="post">
+                                <input class="delete-btn" type="submit" value="Delete" name="delete" />
+                            </form>
+                        </div>
+                    </div>
+                    <%})%>
+                        <%}else{%>
+                            <div class="message">
+                                <p class="msg">There is no data saved here yet </p>
+
+                            </div>
+                            <%}%>
+
+
+        </div>
+
+        <!-- table ends here -->
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Satisfy&family=Source+Sans+Pro:wght@200&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: montserrat;
+}
+
+
+
+.all-details {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 2vw;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.841);
+    height: 3vw;
+}
+
+.main {
+    min-height: calc(100vh - 8vw);
+    height: calc(100vh - 8vw);
+}
+
+.edit-btn {
+    width: 5vw;
+    height: 2vw;
+    /* background-color: blue; */
+    border: 1px solid black;
+    font-size: 1vw;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    transition: all 0.2s linear;
+    border-radius: 5px;
+}
+
+.delete-btn {
+    width: 5vw;
+    height: 2vw;
+    border: none;
+    border: 2px solid black;
+    font-size: 1vw;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.1s linear;
+    border-radius: 5px;
+}
+
+.block {
+    background-color: #cba592;
+
+    font-family: "Poppins", sans-serif;
+    height: 8vw;
+    border-bottom: 3px solid black;
+    width: 100vw;
+
+    display: flex;
+}
+
+.block th {
+    text-align: start;
+    width: 20vw;
+    font-size: 1.2vw;
+}
+
+.block td {
+    font-size: 1.1vw;
+    font-weight: 600;
+    width: 50vw;
+    display: flex;
+}
+
+
+
+.data input {
+    /* height: 2vw; */
+    /* background-color: green; */
+    /* border: 2px solid black; */
+    /* font-size: 1.5vw; */
+    /* opacity: 0.5; */
+    border: none;
+    background-color: #cba592;
+    font-size: 1.1vw;
+    font-weight: 600;
+    min-width: 5vw;
+}
+
+.data input:focus {
+    outline: none;
+}
+
+.btn-div {
+    /* background-color: yellow; */
+    display: none;
+}
+
+.block:hover .btn-div {
+    display: inline;
+    height: inherit;
+    width: calc(90vw - 70vw);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.edit-btn:hover {
+    /* background-color: rgb(7, 7, 146); */
+    background-color: #2e79e5;
+    border-radius: 30px;
+}
+
+.delete-btn:hover {
+    background-color: #ff3232;
+    border-radius: 30px;
+}
+
+.password {
+    min-width: 4vw;
+    width: fit-content;
+}
+
+.message {
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.msg {
+    font-size: 1.5vw;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in page</title>
+    <link rel="stylesheet" href="../Static/css/login.css">
+    <script src="../Static/script/login.js" defer></script>
+</head>
+
+<body>
+    <section>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+
+    </section>
+    <div class="main-container">
+        <div class="container">
+            <div class="form">
+                <h2>Change</h2>
+                <p class="result">
+                    <% if(result){%>
+                        <%=result %>
+                            <% } %>
+                </p>
+                <form action="/change/<%=id%>" method="post">
+
+                    <div class="input-box">
+                        <input type="password" placeholder="Old password" name="password" id="password" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="New password" name="newpassword" id="newpassword" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Confirm password" name="confirmpassword"
+                            id="confirmpassword" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" value="Change">
+                    </div>
+                    <br>
+                    <p class="bottom-text">Forget your password ? <a href="#">Click Here</a></p>
+                    <p class="bottom-text">Don't have an Account ? <a href="/signup">Sign up</a></p>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

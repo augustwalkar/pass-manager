@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in page</title>
+    <link rel="stylesheet" href="../Static/css/login.css">
+    <script src="../Static/script/login.js" defer></script>
+</head>
+
+<body>
+    <section>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+
+    </section>
+    <div class="main-container">
+        <div class="container">
+            <div class="form">
+                <h2>Sign up</h2>
+                <p class="result">
+                    <% if(result!==null ){%>
+                        <%=result %>
+                            <% } %>
+                </p>
+                <form action="/signup" method="post">
+
+                    <div class="input-box">
+                        <input type="text" maxlength="40" placeholder="Username" name="name" id="name" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" name="email" id="email" placeholder="Email address" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Password" name="password" id="password" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Confirm password" name="confirm_password"
+                            id="confirm_password" required>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="submit" value="Sign up">
+                    </div>
+                    <br>
+                    <p class="bottom-text">Already have an account ? <a href="/">Login</a></p>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
