@@ -7,8 +7,6 @@ const bcrypt = require('bcrypt')
 const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
-// const crypto = require('crypto')
-// console.log(crypto.randomBytes(64).toString('hex'))
 //Schema
 const modelSchema = new mongoose.Schema({
     appname: {
