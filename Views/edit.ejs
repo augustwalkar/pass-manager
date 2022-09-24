@@ -7,32 +7,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Static/css/edit.css">
     <title>Edit</title>
+    <script src="../Static/script/edit.js" defer></script>
 </head>
 
 <body>
     <%if(singleData){%>
-        <form action="/editOne/<%=singleData._id%>" method="post">
-            <label for="appname">
-                <%=singleData.appname%>
-            </label>
-            <input type="text" placeholder="Appname" name="appname" id="appname">
-            <label for="username">
-                <%=singleData.username%>
-            </label>
+        <div class="main">
+            <form class="container" action="/editOne/<%=singleData.id%>" method="post">
+                <div class="all-titles">
+                    <p class="title">App / Website name :</p>
+                    <p class="title">Username :</p>
+                    <p class="title">Email :</p>
+                    <p class="title">Password :</p>
+                </div>
+                <div class="all-contents">
+                    <label for="appname">
+                        <%=singleData.appname%>
+                    </label>
+                    <input class="content" placeholder="" name="appname" id="appname" required>
+                    <label for="username">
+                        <%=singleData.username%>
+                    </label>
+                    <input class="content" placeholder="" name="username" id="username" required>
+                    <label for="email">
+                        <%=singleData.email%>
+                    </label>
+                    <input class="content" placeholder="" name="email" id="email" required>
+                    <label for="password">
+                        <%=singleData.password%>
+                    </label>
+                    <input class="content" placeholder="" name="password" id="password" required>
+                </div>
+                <div class="btn">
+                    <input class="edit" type="submit" value="Edit">
+            </form>
+            <form action="/home" method="get">
+                <input class="cancel" type="submit" value="Cancel">
 
-            <input type="text" placeholder="Username" name="username" id="username">
-            <label for="email">
-                <%=singleData.email%>
-            </label>
+            </form>
+        </div>
+        </div>
 
-            <input type="email" placeholder="Email" name="email" id="email">
-            <label for="password">
-                <%=singleData.password%>
-            </label>
-
-            <input type="password" placeholder="Password" name="password" id="password">
-            <input type="submit" value="Edit">
-        </form>
         <%}else{%>
             <h1>No Data Found</h1>
             <%}%>

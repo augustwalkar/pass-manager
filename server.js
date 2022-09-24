@@ -7,76 +7,11 @@ const bcrypt = require('bcrypt')
 const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
-//Schema
-const modelSchema = new mongoose.Schema({
-    appname: {
-        type: String,
-        required: true
-    },
-    username: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    userEmail: {
-        type: String,
-        required: true
-
-    }
-})
-const registerSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-    },
-    recoveryEmail: {
-        type: String,
-        default: null
-    },
-    tokens: [
-        {
-            token: {
-                type: String,
-                required: true
-            }
-        }
-    ]
-})
-//Generating token
-registerSchema.methods.generateAuthToken = async function () {
-    try {
-        let token = jwt.sign({ _id: this.id }, process.env.SECRET_KEY)
-        this.tokens = this.tokens.concat({ token })
-        await this.save()
-        return token;
-    } catch (err) {
-        console.log(err)
-    }
-}
-//Hashing
-registerSchema.pre("save", async function (next) {
-    if (this.isModified("password")) {
-        this.password = await bcrypt.hash(this.password, 10);
-        next()
-    }
-})
-//Model
-const Model = mongoose.model('user-data', modelSchema)
-const Register = mongoose.model('user-credentials', registerSchema)
+//Middleware
+const middleware = require('./middleware/auth')
+//Models
+const Model = require('./Model/model').Model
+const Register = require('./Model/model').Register
 require('dotenv').config()
 app.set('view engine', 'ejs')
 app.set('views', 'Views')
@@ -85,8 +20,9 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(cookieParser())
 //GET
-app.get('/', auth, async (req, res) => {
+app.get('/', middleware.auth, async (req, res) => {
     try {
+        res.authenticated = false;
         if (res.authenticated) {
             const userEmail = res.userEmail
             const Data = await Model.find({ userEmail })
@@ -97,11 +33,9 @@ app.get('/', auth, async (req, res) => {
     } catch (err) {
         console.log(err)
         return res.send(err)
-
     }
-
 })
-app.get('/add', auth, (req, res) => {
+app.get('/add', middleware.auth, (req, res) => {
     if (res.authenticated) {
         return res.render('index', { Data: null, title: res.username })
     } else {
@@ -111,10 +45,15 @@ app.get('/add', auth, (req, res) => {
 app.get('/signup', (req, res) => {
     res.render('signup', { result: null })
 })
-app.get('/recovery', (req, res) => {
-    res.render('recoveryemail')
+app.get('/recovery', middleware.recoveryTimedOut, (req, res) => {
+    if (res.authenticated) {
+        res.render('recoveryemail')
+
+    } else {
+        res.redirect('/signup')
+    }
 })
-app.get('/change/:id', checkTimedOut, async (req, res) => {
+app.get('/change/:id', middleware.checkTimedOut, async (req, res) => {
     if (res.authenticated) {
         const { id } = req.params
         res.render('change', { id, result: null })
@@ -129,12 +68,15 @@ app.get('/forgot', (req, res) => {
 app.get('/return', (req, res) => {
     res.render('return')
 })
-app.get('/home', auth, async (req, res) => {
+app.get('/home', middleware.auth, async (req, res) => {
     try {
         if (res.authenticated) {
 
             const userEmail = res.userEmail
             const Data = await Model.find({ userEmail })
+            Data.forEach((data) => {
+                console.log(data.appname)
+            })
             return res.render('home', { Data, title: res.username })
         } else {
             res.redirect('/')
@@ -210,7 +152,18 @@ app.post('/signup', async (req, res) => {
                     email,
                 })
                 await clientRegister.save()
-                return res.redirect('/')
+                const Users = await Register.findOne({ email })
+                if (Users) {
+                    let recoverToken = jwt.sign({ _id: Users.id }, process.env.RECOVER_TIMED_OUT_KEY)
+                    res.cookie('recoverToken', recoverToken, {
+                        expires: new Date(Date.now() + 180000)
+                    })
+                    return res.redirect('/recovery')
+                } else {
+                    console.log('User not found')
+                    res.redirect('/signup')
+                }
+
             }
         }
     } catch (err) {
@@ -218,13 +171,23 @@ app.post('/signup', async (req, res) => {
         return res.send(err)
     }
 })
-app.post('/addEmail', async (req, res) => {
+app.post('/recovery', async (req, res) => {
     try {
-        console.log(req.body)
+        const { recoveryEmail } = req.body
+        const token = req.cookies.recoverToken;
+        if (token) {
+            const verifyToken = jwt.verify(token, process.env.RECOVER_TIMED_OUT_KEY)
+            await Register.findOneAndUpdate({ _id: verifyToken._id }, { recoveryEmail })
 
-        res.render('recoveryemail')
+            return res.redirect('/')
+        } else {
+            console.log('Token not found')
+            return res.redirect('/signup')
+        }
+
     } catch (err) {
         console.log(err)
+        return res.send(err)
 
     }
 
@@ -272,6 +235,7 @@ app.post('/change/:id', async (req, res) => {
         const token = req.cookies.changeToken
         if (token) {
             const verifyToken = jwt.verify(token, process.env.TIMED_OUT_KEY)
+
             const Users = await Register.findOne({ _id: verifyToken })
             console.log(Users.email)
             if (Users === null) {
@@ -310,16 +274,10 @@ app.post('/forgot', async (req, res) => {
         const Users = await Register.findOne({ email, })
         if (Users) {
             if (recoveryEmail === Users.recoveryEmail) {
-                const genToken = () => {
-
-                    let changeToken = jwt.sign({ _id: Users.id }, process.env.TIMED_OUT_KEY)
-                    res.cookie('changeToken', changeToken, {
-                        expires: new Date(Date.now() + 180000)
-                    })
-                    return changeToken;
-                }
-                genToken()
-
+                let changeToken = jwt.sign({ _id: Users.id }, process.env.TIMED_OUT_KEY)
+                res.cookie('changeToken', changeToken, {
+                    expires: new Date(Date.now() + 180000)
+                })
                 const transporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
@@ -394,46 +352,3 @@ const run = async (url) => {
     }
 }
 run(process.env.MONGO_URI)
-
-//Middleware functions
-async function auth(req, res, next) {
-    try {
-        let authenticated = false
-        const token = req.cookies.jwtToken;
-        if (token) {
-            const verifyToken = jwt.verify(token, process.env.SECRET_KEY)
-            const Users = await Register.findOne({ _id: verifyToken._id })
-
-            if (Users != null) {
-                authenticated = true;
-                res.username = Users.name
-                res.userEmail = Users.email
-            } else {
-                authenticated = false;
-            }
-        }
-        res.authenticated = authenticated;
-        next()
-    } catch (err) {
-        console.log(err)
-    }
-}
-async function checkTimedOut(req, res, next) {
-    try {
-        let authenticated = false;
-        const token = req.cookies.changeToken;
-        if (token) {
-            const verifyToken = jwt.verify(token, process.env.TIMED_OUT_KEY)
-            console.log('Wokring')
-            console.log(verifyToken)
-            authenticated = true
-        } else {
-            authenticated = false;
-        }
-        res.authenticated = authenticated
-        next()
-    } catch (err) {
-        console.log(err)
-        return res.send(err)
-    }
-}
