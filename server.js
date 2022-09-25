@@ -1,4 +1,4 @@
-const port = 5000 || process.env.PORT
+const port = process.env.PORT || 5000
 const hostname = '127.0.0.1'
 const express = require('express')
 const app = express()
