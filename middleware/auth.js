@@ -28,7 +28,6 @@ async function checkTimedOut(req, res, next) {
         let authenticated = false;
         const token = req.cookies.changeToken;
         if (token) {
-            // const verifyToken = jwt.verify(token, process.env.TIMED_OUT_KEY)
             authenticated = true
         } else {
             authenticated = false;
@@ -45,7 +44,6 @@ async function recoveryTimedOut(req, res, next) {
         let authenticated = false
         const token = req.cookies.recoverToken;
         if (token) {
-            // const verifyToken = jwt.verify(token, process.env.RECOVER_TIMED_OUT_KEY)
             authenticated = true;
         } else {
             authenticated = false;
