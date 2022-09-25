@@ -289,7 +289,7 @@ app.post('/forgot', async (req, res) => {
                     from: process.env.EMAIL,
                     to: recoveryEmail,
                     subject: `Getting email from Pass Manager `,
-                    text: `Hii ${Users.name}, click on http://new-pass-manager.herokuapp.com:5000/change/${Users.id} to reset your password`
+                    text: `Hii ${Users.name}, click on http://new-pass-manager.herokuapp.com/change/${Users.id} to reset your password`
                 }
                 transporter.sendMail(mailOptions, (err, info) => {
                     if (err) {
