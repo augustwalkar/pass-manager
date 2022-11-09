@@ -95,16 +95,19 @@ app.get("/editOne/:id", async (req, res) => {
 });
 app.get("/logout", middleware.auth, async (req, res) => {
   try {
+    res.authenticated=false
     if (res.user?.tokens) {
       res.user.tokens = res.user.tokens.filter((element) => {
         return element.token !== res.token;
       });
       await res.user.save();
       res.clearCookie("jwtToken");
-      res.redirect("/add");
+      res.redirect("/");
     } else {
+      res.clearCookie("jwtToken");
+
       console.log("Token expired");
-      res.redirect("/add");
+      res.redirect("/");
     }
   } catch (err) {
     console.log(err);
