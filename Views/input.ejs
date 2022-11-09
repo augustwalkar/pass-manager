@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      <%if(formType=='login'){%> Log in <%}else if(formType==='signup' ){%> Sign
+      up <%}else if(formType==='recoveryemail' ){%> Recovery Email <%}%>
+    </title>
+    <!--// iconscout link //-->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <!--// css link //-->
+    <link rel="stylesheet" href="../Static/css/input.css" />
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="container">
+        <%if(formType==='login'){%>
+        <div class="heading">
+          <h1>Welcome</h1>
+
+          <span>Sign in to your account</span>
+        </div>
+        <div class="msg">
+          <p class="msg"><%if(message){%> <%=message%> <%}%></p>
+        </div>
+
+        <form action="/login" method="post">
+          <div class="all-input">
+            <div class="input">
+              <label for="email">Email</label>
+              <div class="icon">
+                <i class="uil uil-envelope"></i>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+            <div class="input">
+              <label for="password">Password</label>
+              <div class="icon">
+                <i class="uil uil-lock"></i>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom">
+            <div class="link">
+              <!-- <p class="bottom-text">Forget your password ? <a href="/forgot">Click Here</a></p> -->
+              <p class="bottom-text">
+                Don't have an Account ? <a href="/signup">Sign up</a>
+              </p>
+              <a href="/forgot">Forgot password?</a>
+            </div>
+            <div class="btn-div">
+              <input class="btn" type="submit" value="LOGIN" />
+            </div>
+          </div>
+        </form>
+        <%}else if(formType==='signup' ){%>
+        <div class="heading">
+          <h1>Sign up</h1>
+
+          <!-- <span>Sign up </span> -->
+        </div>
+        <div class="msg">
+          <p class="msg"><%if(message){%> <%=message%> <%}%></p>
+        </div>
+        <form action="/signup" method="post">
+          <div class="all-input">
+            <div class="input">
+              <label for="name">Username</label>
+              <div class="icon">
+                <i class="uil uil-envelope"></i>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+            <div class="input">
+              <label for="email">Email</label>
+              <div class="icon">
+                <i class="uil uil-envelope"></i>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+            <div class="input">
+              <label for="password">Password</label>
+              <div class="icon">
+                <i class="uil uil-lock"></i>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+            <div class="input">
+              <label for="confirm_password">Confirm Password</label>
+              <div class="icon">
+                <i class="uil uil-lock"></i>
+                <input
+                  type="password"
+                  name="confirm_password"
+                  id="confirm_password"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom">
+            <div class="link">
+              <!-- <a href="">Forgot password?</a> -->
+              <p class="bottom-text">
+                Already have an account ? <a href="/">Login</a>
+              </p>
+            </div>
+
+            <div class="btn-div">
+              <input class="btn" type="submit" value="REGISTER" />
+            </div>
+          </div>
+        </form>
+        <%}else if (formType==='recoveryemail' ){%>
+        <div class="heading">
+          <h1>Recovery Email</h1>
+
+          <!-- <span>Sign in to your account</span> -->
+        </div>
+        <div class="msg">
+          <p class="msg"><%if(message){%> <%=message%> <%}%></p>
+        </div>
+
+        <form action="/recovery" method="post">
+          <div class="all-input">
+            <div class="input">
+              <label for="recoveryEmail">Your Gmail</label>
+              <div class="icon">
+                <i class="uil uil-envelope"></i>
+                <input
+                  type="email"
+                  name="recoveryEmail"
+                  id="recoveryEmail"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom">
+            <div class="link">
+              <!-- <p class="bottom-text">Forget your password ? <a href="/forgot">Click Here</a></p> -->
+              <p class="bottom-text">
+                Don't have an Account ? <a href="/signup">Sign up</a>
+              </p>
+              <!-- <a href="/forget">Forgot password?</a> -->
+              <p class="bottom-text"><a href="/">Skip for now</a></p>
+            </div>
+            <div class="btn-div">
+              <input class="btn" type="submit" value="ADD" />
+            </div>
+          </div>
+        </form>
+        <%}else if(formType==='verify' ){%>
+        <div class="heading">
+          <h1>Verify</h1>
+
+          <!-- <span>Sign in to your account</span> -->
+        </div>
+        <div class="msg">
+          <p class="msg"><%if(message){%> <%=message%> <%}%></p>
+        </div>
+
+        <form action="/forgot" method="post">
+          <div class="all-input">
+            <div class="input">
+              <label for="email">Email Address</label>
+              <div class="icon">
+                <i class="uil uil-envelope"></i>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+            <div class="input">
+              <label for="recoveryEmail">Recovery Email</label>
+              <div class="icon">
+                <i class="uil uil-envelope"></i>
+                <input
+                  type="email"
+                  name="recoveryEmail"
+                  id="recoveryEmail"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom">
+            <div class="link">
+              <p class="bottom-text">
+                Go to login page ? <a href="/">Click Here</a>
+              </p>
+              <p class="bottom-text"><a href="/signup">Create account</a></p>
+            </div>
+            <div class="btn-div">
+              <input class="btn" type="submit" value="VERIFY" />
+            </div>
+          </div>
+        </form>
+        <%}else if(formType==='change' ){%>
+        <div class="heading">
+          <h1>Change</h1>
+
+          <!-- <span>Sign in to your account</span> -->
+        </div>
+        <div class="msg">
+          <p class="msg"><%if(message){%> <%=message%> <%}%></p>
+        </div>
+
+        <form action="/change/<%=id%>" method="post">
+          <div class="all-input">
+            <div class="input">
+              <label for="newpassword">New Passowrd</label>
+              <div class="icon">
+                <i class="uil uil-lock"></i>
+                <input
+                  type="password"
+                  name="newpassword"
+                  id="newpassword"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+            <div class="input">
+              <label for="confirmpassword">Confirm Password</label>
+              <div class="icon">
+                <i class="uil uil-lock"></i>
+                <input
+                  type="password"
+                  name="confirmpassword"
+                  id="confirmpassword"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom">
+            <div class="link">
+              <!-- <p class="bottom-text">Forget your password ? <a href="/forgot">Click Here</a></p> -->
+              <p class="bottom-text">
+                Don't have an Account ? <a href="/signup">Sign up</a>
+              </p>
+            </div>
+            <div class="btn-div">
+              <input class="btn" type="submit" value="LOGIN" />
+            </div>
+          </div>
+        </form>
+        <%}%>
+      </div>
+    </div>
+  </body>
+</html>
