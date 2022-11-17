@@ -28,42 +28,58 @@
         <div class="main">
             <%if(Data.length !=0){%>
                 <%Data.forEach((data,i)=>{ %>
-                    <div class="block">
-                        <table class="data">
-                            <tr>
-                                <th>App / Website name :</th>
-                                <td>
-                                    <p>
-                                        <%=data.appname%>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Username :</th>
-                                <td>
-                                    <p>
-                                        <%=data.username%>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Email :</th>
-                                <td>
-                                    <p>
-                                        <%=data.email%>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Password :</th>
-                                <td>
-                                    <input type="password" name="password" class="password" value="<%=data.password%>"
-                                        readonly>
-                                    </input><i class="fa-solid fa-eye"></i>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="btn-div">
+                    <div class="container">
+
+
+                        <div class="block">
+                            <table class="data">
+                                <tbody>
+                                    <tr>
+                                        <th>App / Website name :</th>
+                                        <td>
+                                            <p>
+                                                <%=data.appname%>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Username :</th>
+                                        <td>
+                                            <p>
+                                                <%=data.username%>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email :</th>
+                                        <td>
+                                            <p>
+                                                <%=data.email%>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Password :</th>
+                                        <td>
+                                            <input type="password" name="password" class="password"
+                                                value="<%=data.password%>" readonly>
+                                            </input><i class="fa-solid fa-eye"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                            <div class="btn-div">
+                                <form action="/editOne/<%=data.id%>" method="get">
+                                    <input class="edit-btn" type="submit" value="Edit" name="edit" />
+                                </form>
+                                <form action="/deleteOne/<%=data.id%>" method="post">
+                                    <input class="delete-btn" type="submit" value="Delete" name="delete" />
+                                </form>
+                            </div>
+                        </div>
+                        <div class="resp-btn-div">
                             <form action="/editOne/<%=data.id%>" method="get">
                                 <input class="edit-btn" type="submit" value="Edit" name="edit" />
                             </form>

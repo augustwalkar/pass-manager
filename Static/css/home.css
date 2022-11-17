@@ -2,136 +2,264 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Satisfy&family=Source+Sans+Pro:wght@200&display=swap");
 
 * {
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: montserrat;
+  font-family: montserrat;
 }
 
-
-
 .all-details {
-    text-align: center;
-    font-family: "Poppins", sans-serif;
-    font-size: 2vw;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.841);
-    height: 3vw;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.841);
+  height: 3rem;
 }
 
 .main {
-    min-height: calc(100vh - 8vw);
-    height: calc(100vh - 8vw);
+  /* min-height: calc(100vh - 9vw); */
+  height: fit-content;
 }
 
 .edit-btn {
-    width: 5vw;
-    height: 2vw;
-    /* background-color: blue; */
-    border: 1px solid black;
-    font-size: 1vw;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    transition: all 0.2s linear;
-    border-radius: 5px;
+  width: 5vw;
+  height: 2rem;
+  /* background-color: blue; */
+  border: 2px solid black;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  transition: all 0.2s linear;
+  border-radius: 5px;
 }
 
 .delete-btn {
-    width: 5vw;
-    height: 2vw;
-    border: none;
-    border: 2px solid black;
-    font-size: 1vw;
-    font-family: "Poppins", sans-serif;
-    transition: all 0.1s linear;
-    border-radius: 5px;
+  width: 5vw;
+  height: 2rem;
+  border: none;
+  border: 2px solid black;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.1s linear;
+  border-radius: 5px;
+}
+
+.container {
+  height: fit-content;
+  background-color: #cba592;
 }
 
 .block {
-    background-color: #cba592;
+  /* background-color: #cba592; */
 
-    font-family: "Poppins", sans-serif;
-    height: 8vw;
-    border-bottom: 3px solid black;
-    width: 100vw;
+  font-family: "Poppins", sans-serif;
+  height: 8rem;
+  border-bottom: 3px solid black;
 
-    display: flex;
+  display: flex;
 }
 
 .block th {
-    text-align: start;
-    width: 20vw;
-    font-size: 1.2vw;
+  text-align: start;
+  width: 20rem;
+  font-size: 1.1rem;
 }
 
 .block td {
-    font-size: 1.1vw;
-    font-weight: 600;
-    width: 50vw;
-    display: flex;
+  font-size: 1.1rem;
+  font-weight: 600;
+  width: 50rem;
+  display: flex;
 }
 
-
-
 .data input {
-    /* height: 2vw; */
-    /* background-color: green; */
-    /* border: 2px solid black; */
-    /* font-size: 1.5vw; */
-    /* opacity: 0.5; */
-    border: none;
-    background-color: #cba592;
-    font-size: 1.1vw;
-    font-weight: 600;
-    min-width: 5vw;
+  /* height: 2vw; */
+  /* background-color: green; */
+  /* border: 2px solid black; */
+  /* font-size: 1.5vw; */
+  /* opacity: 0.5; */
+  border: none;
+  background-color: #cba592;
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: 5vw;
 }
 
 .data input:focus {
-    outline: none;
+  outline: none;
 }
 
 .btn-div {
-    /* background-color: yellow; */
-    display: none;
+  /* display: inline; */
+  height: inherit;
+  /* width: calc(90vw - 70vw); */
+  width: 20rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.block:hover .btn-div {
+.resp-btn-div {
+  display: none;
+  height: 3rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* .block:hover .btn-div {
     display: inline;
     height: inherit;
     width: calc(90vw - 70vw);
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
+} */
 
 .edit-btn:hover {
-    /* background-color: rgb(7, 7, 146); */
-    background-color: #2e79e5;
-    border-radius: 30px;
+  /* background-color: rgb(7, 7, 146); */
+  background-color: #2e79e5;
+  border-radius: 30px;
 }
 
 .delete-btn:hover {
-    background-color: #ff3232;
-    border-radius: 30px;
+  background-color: #ff3232;
+  border-radius: 30px;
 }
 
 .password {
-    min-width: 4vw;
-    width: fit-content;
+  min-width: 4vw;
+  width: fit-content;
 }
 
 .message {
-    height: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 37.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .msg {
-    font-size: 1.5vw;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 1350px) {
+  .all-details {
+    font-size: 1.8rem;
+    height: 2.5rem;
+  }
+
+  .block td {
+    width: 40rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .block td {
+    width: 30rem;
+  }
+
+  .edit-btn {
+    height: 2rem;
+    width: 4rem;
+  }
+
+  .delete-btn {
+    height: 2rem;
+    width: 4rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .block td {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 858px) {
+  html {
+    font-size: 15px;
+  }
+
+  .block th {
+    width: 15rem;
+  }
+
+  .resp-btn-div {
+    display: flex;
+  }
+
+  .all-details {
+    font-size: 1.5rem;
+    height: 2.4rem;
+  }
+
+  .container {
+    border-bottom: 3px solid black;
+  }
+
+  .btn-div {
+    display: none;
+  }
+
+  .edit-btn {
+    background-color: #2e79e5;
+    border-radius: 30px;
+  }
+
+  .delete-btn {
+    background-color: #ff3232;
+    border-radius: 30px;
+  }
+
+  .block {
+    border-bottom: 1px solid black;
+  }
+}
+
+@media (max-width: 550px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 366px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 330px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 300px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 260px) {
+  html {
+    font-size: 7px;
+  }
 }
