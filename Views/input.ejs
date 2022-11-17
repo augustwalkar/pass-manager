@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      <%if(formType=='login'){%> Log in <%}else if(formType==='signup' ){%> Sign
-      up <%}else if(formType==='recoveryemail' ){%> Recovery Email <%}%>
+      <%if(formType=='login'){%> Log in | Pass Manager <%}else
+      if(formType==='signup' ){%> Sign up | Pass Manager <%}else
+      if(formType==='recoveryemail' ){%> Recovery Email | Pass Manager <%}else
+      if(formType==='verify' ){%> Verify | Pass Manager <%}else
+      if(formType==='change' ){%> Change | Pass Manager <%}%>
     </title>
     <!--// iconscout link //-->
     <link
@@ -235,9 +238,11 @@
           <div class="bottom">
             <div class="link">
               <p class="bottom-text">
+                <a href="/signup">Create new account</a>
+              </p>
+              <p class="bottom-text">
                 Go to login page ? <a href="/">Click Here</a>
               </p>
-              <p class="bottom-text"><a href="/signup">Create account</a></p>
             </div>
             <div class="btn-div">
               <input class="btn" type="submit" value="VERIFY" />
@@ -292,7 +297,7 @@
               </p>
             </div>
             <div class="btn-div">
-              <input class="btn" type="submit" value="LOGIN" />
+              <input class="btn" type="submit" value="CHANGE" />
             </div>
           </div>
         </form>

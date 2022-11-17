@@ -22,14 +22,14 @@ app.use(cookieParser());
 //GET
 app.get('/', middleware.auth, async (req, res) => {
     try {
-        // if (res.authenticated) {
-        // const userEmail = res.userEmail;
-        // const Data = await Model.find({ userEmail });
-        // return res.render('home', { Data, title: res.username });
-        // } else {
+        if (res.authenticated) {
+            const userEmail = res.userEmail;
+            const Data = await Model.find({ userEmail });
+            return res.render('home', { Data, title: res.username });
+        } else {
 
-        // }
-        res.render('input', { message: null, formType: 'login' });
+            res.render('input', { message: null, formType: 'login' });
+        }
     } catch (err) {
         console.log(err);
         return res.send(err);

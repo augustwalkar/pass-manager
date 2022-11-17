@@ -106,3 +106,134 @@ body {
 .title-input::placeholder {
     transition: 0.5 ease-in-out;
 }
+
+@media(max-width:1350px) {
+
+    /* .all-details {
+        font-size: 1.8rem;
+        height: 2.5rem;
+    }
+
+    .block td {
+        width: 40rem;
+    } */
+}
+
+@media(max-width:1200px) {
+    /* .block td {
+        width: 30rem;
+    }
+
+    .edit-btn {
+        height: 2rem;
+        width: 4rem;
+    }
+
+    .delete-btn {
+        height: 2rem;
+        width: 4rem;
+    } */
+}
+
+@media(max-width:1000px) {
+    /* .block td {
+        width: 20rem;
+    } */
+}
+
+@media(max-width:858px) {
+    html {
+        font-size: 15px;
+    }
+
+    /* .block th {
+        width: 15rem;
+    }
+
+    .resp-btn-div {
+        display: flex;
+    }
+
+    .all-details {
+        font-size: 1.5rem;
+        height: 2.4rem;
+    }
+
+    .container {
+        border-bottom: 3px solid black;
+    }
+
+    .btn-div {
+        display: none;
+    }
+
+    .edit-btn {
+        background-color: #2e79e5;
+        border-radius: 30px;
+    }
+
+    .delete-btn {
+        background-color: #ff3232;
+        border-radius: 30px;
+    }
+
+    .block {
+        border-bottom: 1px solid black;
+    } */
+}
+
+@media(max-width:550px) {
+    html {
+        font-size: 13px;
+    }
+
+
+}
+
+@media(max-width:450px) {
+    html {
+        font-size: 12px;
+    }
+
+
+}
+
+@media(max-width:400px) {
+    html {
+        font-size: 11px;
+    }
+
+
+}
+
+@media(max-width:366px) {
+    html {
+        font-size: 10px;
+    }
+
+
+}
+
+@media(max-width:330px) {
+    html {
+        font-size: 9px;
+    }
+
+
+}
+
+@media(max-width:300px) {
+    html {
+        font-size: 8px;
+    }
+
+
+}
+
+@media(max-width:260px) {
+    html {
+        font-size: 7px;
+    }
+
+
+}
